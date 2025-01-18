@@ -6,106 +6,96 @@
     <title>Guestbook</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
             color: #333;
         }
 
-        h1 {
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
             text-align: center;
-            color: #444;
-            font-size: 2.5em;
-            margin-bottom: 20px;
         }
 
-        h3 {
-            margin-top: 30px;
-            font-size: 1.5em;
-            color: #555;
-        }
-
-        #messages {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
+        main {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
-            max-height: 300px;
-            overflow-y: auto;
         }
 
         .message {
-            border-bottom: 1px solid #eee;
-            padding: 10px 5px;
-            font-size: 1em;
-            color: #555;
-        }
-
-        .message:last-child {
-            border-bottom: none;
+            border-left: 5px solid #4CAF50;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border-radius: 3px;
         }
 
         textarea {
             width: 100%;
             padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ddd;
+            margin-top: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             resize: none;
         }
 
-        textarea:focus {
-            outline: none;
-            border-color: #888;
-            box-shadow: 0 0 5px rgba(136, 136, 136, 0.5);
-        }
-
         button {
+            display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
-            font-size: 1em;
-            background-color: #007BFF;
+            font-size: 1rem;
             color: white;
+            background-color: #4CAF50;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #45a049;
         }
 
         .version {
-            font-size: 0.9em;
-            color: gray;
             margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
         }
 
         footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.8em;
-            color: #aaa;
+            padding: 1rem;
+            background: #333;
+            color: white;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-<h1>Guestbook</h1>
-<div id="messages"></div>
+<header>
+    <h1>Guestbook</h1>
+</header>
 
-<h3>Leave a Message</h3>
-<textarea id="messageInput" rows="4" cols="50" placeholder="Your message..."></textarea><br>
-<button id="submitButton">Submit</button>
+<main>
+    <div id="messages"></div>
 
-<p class="version" id="frontendVersion">Frontend Version: 1.0.0</p>
-<p class="version" id="backendVersion">Backend Version: Loading...</p>
+    <h3>Leave a Message</h3>
+    <textarea id="messageInput" rows="4" placeholder="Your message..."></textarea><br>
+    <button id="submitButton">Submit</button>
+
+    <p class="version" id="frontendVersion">Frontend Version: 1.0.0</p>
+    <p class="version" id="backendVersion">Backend Version: Loading...</p>
+</main>
 
 <script>
-    const apiBaseUrl = "";
+    const apiBaseUrl = "https://d5dgqbh5u3jq2eprtrp3.qsvaa8tq.apigw.yandexcloud.net/api";
 
     async function fetchMessages() {
         try {
